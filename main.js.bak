@@ -1,0 +1,193 @@
+(function () {
+  'use strict';
+
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const fine    = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+  /* ── Marquee: stack técnico em loop ────────────────────────── */
+  const STACK = ['C#', '.NET 8', 'Blazor', 'ASP.NET Core', 'SQL Server', 'EF Core',
+                 'Azure', 'Git', 'REST APIs', 'T-SQL', 'JavaScript', 'Docker'];
+  const track = document.getElementById('marqueeTrack');
+  if (track) {
+    const half = STACK.map(t => '<span class="marquee-item">' + t + '</span>').join('');
+    track.innerHTML = half + half;
+  }
+
+  /* ── Cursor + spotlight ────────────────────────────────────── */
+  if (fine) {
+    const cursor = document.getElementById('cursor');
+    const ring   = document.getElementById('cursor-ring');
+    const spot   = document.getElementById('spotlight');
+    let mx = -200, my = -200, rx = -200, ry = -200, sx = -400, sy = -400;
+
+    document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+
+    (function loop() {
+      rx += (mx - rx) * 0.16;
+      ry += (my - ry) * 0.16;
+      sx += (mx - sx) * 0.07;
+      sy += (my - sy) * 0.07;
+      cursor.style.transform = 'translate(' + mx + 'px,' + my + 'px) translate(-50%,-50%)';
+      ring.style.transform   = 'translate(' + rx + 'px,' + ry + 'px) translate(-50%,-50%)';
+      spot.style.transform   = 'translate(' + sx + 'px,' + sy + 'px)';
+      requestAnimationFrame(loop);
+    })();
+  }
+
+  /* ── Realce radial dentro dos cartões ──────────────────────── */
+  if (fine) {
+    document.querySelectorAll('.glow-card').forEach(card => {
+      card.addEventListener('mousemove', e => {
+        const r = card.getBoundingClientRect();
+        card.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+        card.style.setProperty('--my', (e.clientY - r.top) + 'px');
+      });
+    });
+  }
+
+  /* ── Tilt 3D nos cartões do hero ───────────────────────────── */
+  if (fine && !reduced) {
+    document.querySelectorAll('.tilt').forEach(el => {
+      el.addEventListener('mousemove', e => {
+        const r = el.getBoundingClientRect();
+        const px = (e.clientX - r.left) / r.width  - 0.5;
+        const py = (e.clientY - r.top)  / r.height - 0.5;
+        el.style.transform =
+          'perspective(900px) rotateX(' + (-py * 7).toFixed(2) + 'deg) rotateY(' +
+          (px * 9).toFixed(2) + 'deg) translateY(-4px)';
+      });
+      el.addEventListener('mouseleave', () => { el.style.transform = ''; });
+    });
+  }
+
+  /* ── Botões magnéticos ─────────────────────────────────────── */
+  if (fine && !reduced) {
+    document.querySelectorAll('.magnetic').forEach(btn => {
+      btn.addEventListener('mousemove', e => {
+        const r = btn.getBoundingClientRect();
+        const x = e.clientX - r.left - r.width / 2;
+        const y = e.clientY - r.top - r.height / 2;
+        btn.style.transform = 'translate(' + (x * 0.18).toFixed(1) + 'px,' + (y * 0.26).toFixed(1) + 'px)';
+      });
+      btn.addEventListener('mouseleave', () => { btn.style.transform = ''; });
+    });
+  }
+
+  /* ── Nav: fundo ao scroll + progresso + secção ativa ───────── */
+  const nav      = document.getElementById('navbar');
+  const progress = document.getElementById('progress');
+  const sections = Array.from(document.querySelectorAll('section[id]'));
+  const navLinks = Array.from(document.querySelectorAll('.nav-links a'));
+  let ticking = false;
+
+  function onScroll() {
+    const y = window.scrollY;
+    nav.classList.toggle('scrolled', y > 60);
+
+    const max = document.documentElement.scrollHeight - window.innerHeight;
+    progress.style.width = (max > 0 ? (y / max) * 100 : 0) + '%';
+
+    let current = '';
+    sections.forEach(s => {
+      if (y >= s.offsetTop - window.innerHeight * 0.35) current = s.id;
+    });
+    navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + current));
+    ticking = false;
+  }
+  window.addEventListener('scroll', () => {
+    if (!ticking) { ticking = true; requestAnimationFrame(onScroll); }
+  }, { passive: true });
+  onScroll();
+
+  /* ── Menu mobile ───────────────────────────────────────────── */
+  const toggle = document.getElementById('navToggle');
+  const menu   = document.getElementById('mobileMenu');
+  function setMenu(open) {
+    menu.classList.toggle('open', open);
+    toggle.classList.toggle('open', open);
+    toggle.setAttribute('aria-expanded', String(open));
+    document.body.style.overflow = open ? 'hidden' : '';
+  }
+  toggle.addEventListener('click', () => setMenu(!menu.classList.contains('open')));
+  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenu(false)));
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') setMenu(false); });
+
+  /* ── Contadores ────────────────────────────────────────────── */
+  function countUp(el) {
+    const target = parseInt(el.dataset.count, 10);
+    const suffix = el.dataset.suffix || '';
+    if (reduced) { el.textContent = target + suffix; return; }
+    const dur = 1400;
+    let start = null;
+    function step(ts) {
+      if (start === null) start = ts;
+      const p = Math.min((ts - start) / dur, 1);
+      const eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = Math.round(target * eased) + (p === 1 ? suffix : '');
+      if (p < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+
+  /* ── Barras de skill ───────────────────────────────────────── */
+  function fillSkills(scope) {
+    scope.querySelectorAll('.skill-bar').forEach(bar => { bar.style.width = bar.dataset.w + '%'; });
+    scope.querySelectorAll('.skill-pct').forEach(pct => {
+      const target = parseInt(pct.dataset.pct, 10);
+      if (reduced) { pct.textContent = target + '%'; return; }
+      let start = null;
+      function step(ts) {
+        if (start === null) start = ts;
+        const p = Math.min((ts - start) / 1300, 1);
+        const eased = 1 - Math.pow(1 - p, 3);
+        pct.textContent = Math.round(target * eased) + '%';
+        if (p < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    });
+  }
+
+  /* ── Reveal ao scroll ──────────────────────────────────────── */
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      e.target.classList.add('visible');
+      io.unobserve(e.target);
+      e.target.querySelectorAll('[data-count]').forEach(countUp);
+      if (e.target.querySelector('.skill-bar')) fillSkills(e.target);
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  /* ── Formulário ────────────────────────────────────────────── */
+  const form  = document.getElementById('contactForm');
+  const toast = document.getElementById('toast');
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 3500);
+    form.reset();
+  });
+
+  /* ── Máquina de escrever no cargo ──────────────────────────── */
+  const roles = ['Full Stack Developer', '.NET Engineer', 'Blazor Developer', 'Software Craftsman'];
+  const roleEl = document.getElementById('roleText');
+  if (roleEl && !reduced) {
+    let ri = 0, ci = roles[0].length, deleting = true;
+    function type() {
+      const current = roles[ri];
+      if (deleting) {
+        ci--;
+        roleEl.textContent = current.slice(0, ci);
+        if (ci === 0) { deleting = false; ri = (ri + 1) % roles.length; }
+        setTimeout(type, 45);
+      } else {
+        ci++;
+        roleEl.textContent = current.slice(0, ci);
+        if (ci === current.length) { deleting = true; setTimeout(type, 2400); return; }
+        setTimeout(type, 85);
+      }
+    }
+    setTimeout(type, 2600);
+  }
+})();

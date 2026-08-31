@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gustavo Mendo — Full Stack Developer</title>
+  <meta name="description" content="Gustavo Mendo — Full Stack Developer. .NET, Blazor e SQL Server." />
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#0c0d10" media="(prefers-color-scheme: dark)" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- Progresso de leitura -->
+  <div id="progress"></div>
+
+  <!-- Toast -->
+  <div id="toast">Mensagem enviada</div>
+
+  <!-- Menu Mobile -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#sobre">Sobre</a>
+    <a href="#skills">Skills</a>
+    <a href="#projetos">Projetos</a>
+    <a href="#experiencia">Experiência</a>
+    <a href="#contacto">Contacto</a>
+  </div>
+
+  <!-- Nav -->
+  <nav id="navbar">
+    <a href="#hero" class="nav-logo">G<span>.</span>Mendo</a>
+    <div class="nav-links">
+      <a href="#sobre">Sobre</a>
+      <a href="#skills">Skills</a>
+      <a href="#projetos">Projetos</a>
+      <a href="#experiencia">Experiência</a>
+      <a href="#contacto">Contacto</a>
+    </div>
+    <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- ─── HERO ─────────────────────────────────────────────────────── -->
+  <section id="hero">
+    <div class="hero-content">
+      <p class="hero-index reveal">Introdução</p>
+      <h1 class="hero-name">
+        <span class="first reveal reveal-delay-1">Gustavo</span>
+        <span class="last reveal reveal-delay-2">Mendo</span>
+      </h1>
+      <p class="hero-role reveal reveal-delay-3">Full Stack Developer &middot; .NET &amp; Blazor</p>
+      <p class="hero-tagline reveal reveal-delay-4">
+        Construo aplicações <strong>do servidor à interface</strong>.<br/>
+        Foco em .NET, Blazor e soluções que escalam.
+      </p>
+      <div class="hero-cta reveal reveal-delay-5">
+        <a href="#projetos" class="btn btn-primary"><span>Ver Projetos</span><span class="btn-arrow">→</span></a>
+        <a href="#contacto" class="btn btn-outline"><span>Contactar</span></a>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="hero-card glow-card reveal reveal-delay-2">
+        <div class="hero-card-dot"></div>
+        <div class="hero-card-label">Estado atual</div>
+        <div class="hero-card-value">FullStack Developer</div>
+        <div class="hero-card-sub">.NET e SQL Server</div>
+      </div>
+      <div class="hero-card glow-card reveal reveal-delay-3">
+        <div class="hero-card-label">Stack principal</div>
+        <div class="hero-card-value">C# · .NET · Blazor</div>
+        <div class="hero-card-sub">ASP.NET Core · SQL Server · Azure</div>
+      </div>
+      <div class="hero-card glow-card reveal reveal-delay-4">
+        <div class="hero-card-label">Formação</div>
+        <div class="hero-card-value">CTeSP Redes &amp; Sistemas Informáticos</div>
+        <div class="hero-card-sub">→ Licenciatura Eng. Redes e Sistemas Informáticos (pós-laboral)</div>
+      </div>
+      <div class="hero-stats reveal reveal-delay-5">
+        <div class="stat">
+          <div class="stat-num" data-count="20">0</div>
+          <div class="stat-label">Anos</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num" data-count="3" data-suffix="+">0</div>
+          <div class="stat-label">Projetos</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">PT</div>
+          <div class="stat-label">Portugal</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-scroll">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track" id="marqueeTrack"></div>
+    </div>
+  </section>
+
+  <!-- ─── SOBRE ─────────────────────────────────────────────────────── -->
+  <section id="sobre" class="section">
+    <div class="container">
+      <div class="sobre-grid">
+        <div class="sobre-text">
+          <p class="label reveal">Sobre mim</p>
+          <h2 class="section-title reveal reveal-delay-1">Engenheiro por<br/><em>vocação</em></h2>
+          <p class="reveal reveal-delay-2">
+            Tenho 20 anos e sou natural de Portugal. Estou a concluir o <strong>CTeSP em Redes e Sistemas Informáticos</strong>,
+            com foco em desenvolvimento de software — especificamente no ecossistema <strong>.NET e Blazor</strong>.
+          </p>
+          <p class="reveal reveal-delay-3">
+            Durante o meu percurso académico e pessoal desenvolvi uma paixão pelo desenvolvimento full stack:
+            gosto de construir desde a base de dados até à interface, garantindo que cada camada comunica de forma eficiente e segura.
+          </p>
+          <p class="reveal reveal-delay-4">
+            O meu próximo passo é ingressar numa <strong>Licenciatura em Engenharia Informática</strong> em regime pós-laboral,
+            consolidando a teoria que já aplico na prática. Procuro ambientes onde possa crescer rapidamente e contribuir desde o primeiro dia.
+          </p>
+        </div>
+        <div class="sobre-aside">
+          <div class="info-row glow-card reveal reveal-delay-1">
+            <div class="info-body">
+              <div class="info-key">Formação</div>
+              <div class="info-val">CTeSP Redes &amp; Sistemas Informáticos<br/><small>→ Licenciatura Eng. Redes e Sistemas Informáticos (a iniciar)</small></div>
+            </div>
+          </div>
+          <div class="info-row glow-card reveal reveal-delay-2">
+            <div class="info-body">
+              <div class="info-key">Localização</div>
+              <div class="info-val">Portugal <small>— disponível para remoto</small></div>
+            </div>
+          </div>
+          <div class="info-row glow-card reveal reveal-delay-3">
+            <div class="info-body">
+              <div class="info-key">Situação</div>
+              <div class="info-val">Estágio curricular <small>— contrato 3 meses garantido pós-estágio</small></div>
+            </div>
+          </div>
+          <div class="info-row glow-card reveal reveal-delay-4">
+            <div class="info-body">
+              <div class="info-key">Objetivo</div>
+              <div class="info-val">Crescer como dev .NET full stack, contribuir em produtos reais</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── SKILLS ────────────────────────────────────────────────────── -->
+  <section id="skills" class="section">
+    <div class="container">
+      <p class="label reveal">Stack técnico</p>
+      <h2 class="section-title reveal reveal-delay-1">O que <em>sei fazer</em></h2>
+
+      <div class="skills-grid">
+
+        <div class="skill-category glow-card reveal reveal-delay-1">
+          <div class="skill-cat-header">
+            <span class="skill-cat-name">Backend</span>
+          </div>
+          <div class="skill-item">
+            <span class="skill-name">C#</span>
+            <div class="skill-bar-wrap"><div class="skill-bar" data-w="82"></div></div>
+            <span class="skill-pct" data-pct="82">0%</span>
+          </div>
+          <div class="skill-item">
+            <span class="skill-name">.NET / ASP.NET Core</span>
+            <div class="skill-bar-wrap"><div class="skill-bar" data-w="78"></div></div>
+            <span class="skill-pct" data-pct="78">0%</span>
+          </div>
+          <div class="skill-item">
+            <span class="skill-name">Entity Framework</span>
+            <div class="skill-bar-wrap"><div class="skill-bar" data-w="70"></div></div>
+            <span class="skill-pct" data-pct="70">0%</span>
+          </div>
+          <div class="skill-item">
+            <span class="skill-name">REST APIs</span>
+            <div class="skill-bar-wrap"><div class="skill-bar" data-w="72"></div></div>
+            <span class="skill-pct" data-pct="72">0%</span>
+          </div>
+        </div>
+
+        <div class="skill-category glow-card reveal reveal-delay-2">
+          <div class="skill-cat-header">
+            <span class="skill-cat-name">Frontend</span>
+          </div>
+          <div class="skill-item">
+            <span class="skill-name">Blazor</span>
+            <div class="skill-bar-wrap"><div class="skill-bar" data-w="80"></div></div>
+            <span class="skill-pct" data-pct="80">0%</span>
+          </div>
+          <div class="skill-item">
+            <span class="skill-name">HTML / CSS</span>
+            <div class="skill-bar-wrap"><div class="skill-bar" data-w="75"></div></div>
+            <span class="skill-pct" data-pct="75">0%</span>
+          </div>
+          <div class="skill-item">
+            <span class="skill-name">JavaScript</span>
+            <div class="skill-bar-wrap"><div class="skill-bar" data-w="62"></div></div>
+            <span class="skill-pct" data-pct="62">0%</span>
+          </div>
+          <div class="skill-item">
+            <span class="skill-name">Responsive Design</span>
+            <div class="skill-bar-wrap"><div class="skill-bar" data-w="68"></div></div>
+            <span class="skill-pct" data-pct="68">0%</span>
+          </div>
+        </div>
+
+        <div class="skill-category glow-card reveal reveal-delay-3">
+          <div class="skill-cat-header">
+            <span class="skill-cat-name">Bases de Dados</span>
+          </div>
+          <div class="skill-item">
+            <span class="skill-name">SQL Server</span>
+            <div class="skill-bar-wrap"><div class="skill-bar" data-w="74"></div></div>
+            <span class="skill-pct" data-pct="74">0%</span>
+          </div>
+          <div class="skill-item">
+            <span class="skill-name">T-SQL / Queries</span>
+            <div class="skill-bar-wrap"><div class="skill-bar" data-w="70"></div></div>
+            <span class="skill-pct" data-pct="70">0%</span>
+          </div>
+          <div class="skill-item">
+            <span class="skill-name">SQLite</span>
+            <div class="skill-bar-wrap"><div class="skill-bar" data-w="60"></div></div>
+            <span class="skill-pct" data-pct="60">0%</span>
+          </div>
+          <div class="skill-tags">
+            <span class="tag">Migrations</span>
+            <span class="tag">CRUD</span>
+            <span class="tag accent">EF Core</span>
+          </div>
+        </div>
+
+        <div class="skill-category glow-card reveal reveal-delay-4">
+          <div class="skill-cat-header">
+            <span class="skill-cat-name">Ferramentas &amp; DevOps</span>
+          </div>
+          <div class="skill-item">
+            <span class="skill-name">Git / GitHub</span>
+            <div class="skill-bar-wrap"><div class="skill-bar" data-w="76"></div></div>
+            <span class="skill-pct" data-pct="76">0%</span>
+          </div>
+          <div class="skill-item">
+            <span class="skill-name">Visual Studio</span>
+            <div class="skill-bar-wrap"><div class="skill-bar" data-w="82"></div></div>
+            <span class="skill-pct" data-pct="82">0%</span>
+          </div>
+          <div class="skill-item">
+            <span class="skill-name">VS Code</span>
+            <div class="skill-bar-wrap"><div class="skill-bar" data-w="72"></div></div>
+            <span class="skill-pct" data-pct="72">0%</span>
+          </div>
+          <div class="skill-tags">
+            <span class="tag">Azure</span>
+            <span class="tag">Docker (básico)</span>
+            <span class="tag accent">CI/CD</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── PROJETOS ──────────────────────────────────────────────────── -->
+  <section id="projetos" class="section">
+    <div class="container">
+      <div class="projects-header">
+        <div>
+          <p class="label reveal">Projetos</p>
+          <h2 class="section-title reveal reveal-delay-1">O que <em>construí</em></h2>
+        </div>
+        <a href="https://github.com/gustavomendo" target="_blank" rel="noopener" class="btn btn-outline reveal reveal-delay-2">
+          <span>Ver todos no GitHub</span><span class="btn-arrow">↗</span>
+        </a>
+      </div>
+
+      <div class="projects-grid">
+
+        <div class="project-card glow-card reveal reveal-delay-1">
+          <div class="project-number">01</div>
+          <h3 class="project-name">Mini CRM</h3>
+          <p class="project-desc">CRM construído de raiz em C# / .NET ao longo de 17 fases incrementais: de aplicação de consola a interface web, passando por persistência, relatórios e deteção de clientes inativos ou em risco de abandono.</p>
+          <div class="project-tags">
+            <span class="tag accent">C#</span>
+            <span class="tag accent">.NET 10</span>
+            <span class="tag">Consola</span>
+            <span class="tag">Em desenvolvimento</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/gustavomendo/mini-crm" target="_blank" rel="noopener" class="project-link">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+              GitHub
+            </a>
+          </div>
+        </div>
+
+        <div class="project-card glow-card reveal reveal-delay-2">
+          <div class="project-number">02</div>
+          <h3 class="project-name">Portfolio Pessoal</h3>
+          <p class="project-desc">Este mesmo website — construído com HTML, CSS e JavaScript puros. Design minimalista, tema claro/escuro automático e revelação de conteúdo com Intersection Observer.</p>
+          <div class="project-tags">
+            <span class="tag accent">HTML5</span>
+            <span class="tag accent">CSS3</span>
+            <span class="tag">JavaScript</span>
+            <span class="tag">Responsive</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/gustavomendo" target="_blank" rel="noopener" class="project-link">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+              GitHub
+            </a>
+            <a href="#hero" class="project-link">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              Demo
+            </a>
+          </div>
+        </div>
+
+        <div class="project-card glow-card reveal reveal-delay-3">
+          <div class="project-number">03</div>
+          <h3 class="project-name">SistemaLogin</h3>
+          <p class="project-desc">API REST de autenticação em ASP.NET Core 8: registo, login com JWT válido por 1 hora e endpoint de perfil protegido. Passwords com hash BCrypt e salt automático, mensagens de erro genéricas para evitar enumeração de contas.</p>
+          <div class="project-tags">
+            <span class="tag accent">C#</span>
+            <span class="tag accent">ASP.NET Core 8</span>
+            <span class="tag">JWT</span>
+            <span class="tag">EF Core</span>
+            <span class="tag">SQLite</span>
+            <span class="tag">Swagger</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/gustavomendo/SistemaLogin" target="_blank" rel="noopener" class="project-link">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+              GitHub
+            </a>
+          </div>
+        </div>
+
+        <div class="project-card glow-card reveal reveal-delay-4">
+          <div class="project-number">04</div>
+          <h3 class="project-name">Projeto 4</h3>
+          <p class="project-desc">Espaço reservado para próximo projeto. Adicione nome, descrição, tecnologias utilizadas e links relevantes conforme for construindo.</p>
+          <div class="project-tags">
+            <span class="tag">Em desenvolvimento</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/gustavomendo" target="_blank" rel="noopener" class="project-link">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+              GitHub
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── EXPERIÊNCIA ───────────────────────────────────────────────── -->
+  <section id="experiencia" class="section">
+    <div class="container">
+      <p class="label reveal">Experiência</p>
+      <h2 class="section-title reveal reveal-delay-1">Onde <em>trabalhei</em></h2>
+
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date reveal">04/05/2026 — Presente</div>
+          <h3 class="timeline-role reveal reveal-delay-1">Full Stack Developer</h3>
+          <p class="timeline-company reveal reveal-delay-2">
+            <span>Megastock Informática Lda.</span> — Portugal
+          </p>
+          <div class="timeline-tasks reveal reveal-delay-3">
+            <p class="timeline-task">Desenvolvimento de aplicações web com Blazor Server e ASP.NET Core</p>
+            <p class="timeline-task">Modelação e gestão de bases de dados com SQL Server e Entity Framework Core</p>
+            <p class="timeline-task">Implementação de sistemas CRM internos para gestão de clientes e vendas</p>
+            <p class="timeline-task">Participação ativa em ciclos de desenvolvimento e code review</p>
+            <p class="timeline-task">Integração em ambiente de trabalho real com metodologias ágeis</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date reveal">02/03/2026 — 31/07/2026</div>
+          <h3 class="timeline-role reveal reveal-delay-1">Estagiário Full Stack Developer</h3>
+          <p class="timeline-company reveal reveal-delay-2">
+            <span>Megastock Informática Lda.</span> — Portugal
+          </p>
+          <div class="timeline-tasks reveal reveal-delay-3">
+            <p class="timeline-task">Desenvolvimento de aplicações web com Blazor Server e ASP.NET Core</p>
+            <p class="timeline-task">Modelação e gestão de bases de dados com SQL Server e Entity Framework Core</p>
+            <p class="timeline-task">Implementação de sistemas CRM internos para gestão de clientes e vendas</p>
+            <p class="timeline-task">Participação ativa em ciclos de desenvolvimento e code review</p>
+            <p class="timeline-task">Integração em ambiente de trabalho real com metodologias ágeis</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date reveal">2023 — 2026</div>
+          <h3 class="timeline-role reveal reveal-delay-1">Formação Académica</h3>
+          <p class="timeline-company reveal reveal-delay-2">
+            <span>CTeSP — Redes e Sistemas Informáticos</span>
+          </p>
+          <div class="timeline-tasks reveal reveal-delay-3">
+            <p class="timeline-task">Programação orientada a objetos em C# e desenvolvimento .NET</p>
+            <p class="timeline-task">Administração de sistemas Windows Server e redes TCP/IP</p>
+            <p class="timeline-task">Desenvolvimento de aplicações desktop e web</p>
+            <p class="timeline-task">Bases de dados relacionais com SQL Server</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── CONTACTO ──────────────────────────────────────────────────── -->
+  <section id="contacto" class="section">
+    <div class="container">
+      <p class="label reveal">Contacto</p>
+      <h2 class="section-title reveal reveal-delay-1">Vamos <em>falar</em></h2>
+
+      <div class="contact-grid">
+        <div class="contact-info">
+          <h3 class="reveal reveal-delay-2">Aberto a novas oportunidades</h3>
+          <p class="reveal reveal-delay-3">
+            Estou disponível para projetos freelance, colaborações técnicas, ou simplesmente para trocar ideias sobre .NET e desenvolvimento web.
+            Respondo sempre.
+          </p>
+          <div class="contact-links">
+            <a href="mailto:gustavomendo22pt@gmail.com" class="contact-link-item glow-card reveal reveal-delay-1">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+              <div class="contact-link-info">
+                <div class="contact-link-label">Email</div>
+                <div class="contact-link-value">gustavomendo22pt@gmail.com</div>
+              </div>
+            </a>
+            <a href="https://www.linkedin.com/in/gustavomendo" target="_blank" rel="noopener" class="contact-link-item glow-card reveal reveal-delay-2">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+              <div class="contact-link-info">
+                <div class="contact-link-label">LinkedIn</div>
+                <div class="contact-link-value">www.linkedin.com/in/gustavomendo</div>
+              </div>
+            </a>
+            <a href="https://github.com/gustavomendo" target="_blank" rel="noopener" class="contact-link-item glow-card reveal reveal-delay-3">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+              <div class="contact-link-info">
+                <div class="contact-link-label">GitHub</div>
+                <div class="contact-link-value">github.com/gustavomendo</div>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <form class="contact-form glow-card reveal reveal-delay-2" id="contactForm">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="nome">Nome</label>
+              <input type="text" id="nome" name="nome" placeholder="O teu nome" required />
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" placeholder="o@teu.email" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="assunto">Assunto</label>
+            <input type="text" id="assunto" name="assunto" placeholder="Sobre o quê?" />
+          </div>
+          <div class="form-group">
+            <label for="mensagem">Mensagem</label>
+            <textarea id="mensagem" name="mensagem" placeholder="A tua mensagem..." required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary btn-full">
+            <span>Enviar Mensagem</span><span class="btn-arrow">→</span>
+          </button>
+          <p class="form-note">Responderei em menos de 48 horas</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── FOOTER ────────────────────────────────────────────────────── -->
+  <footer>
+    <div class="foot-left">© 2025 Gustavo Mendo — Construído com HTML, CSS &amp; JS</div>
+    <div class="foot-right">
+      Portugal ·
+      <a href="https://github.com/gustavomendo" target="_blank" rel="noopener">GitHub</a> ·
+      <a href="https://www.linkedin.com/in/gustavomendo" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </footer>
+
+  <script src="main.js" defer></script>
+</body>
+</html>
