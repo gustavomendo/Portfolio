@@ -564,9 +564,9 @@ nav.scrolled {
   position: absolute; left: -28px; top: 9px;
   width: 7px; height: 7px;
   border-radius: 50%;
-  background: var(--accent);
+  background: var(--border-strong);
 }
-.timeline-item:nth-child(2) .timeline-dot { background: var(--border-strong); }
+.timeline-item:first-child .timeline-dot { background: var(--accent); }
 
 .timeline-date {
   font-family: 'JetBrains Mono', ui-monospace, monospace;
