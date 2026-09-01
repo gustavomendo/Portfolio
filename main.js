@@ -98,6 +98,48 @@
   }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
+
+  /* -- Tema claro / escuro ----------------------------------- */
+  (function initTheme() {
+    const btn   = document.getElementById('themeToggle');
+    const meta  = document.getElementById('themeColorMeta');
+    const media = window.matchMedia('(prefers-color-scheme: dark)');
+    if (!btn) return;
+
+    let saved = null;
+    try { saved = localStorage.getItem('theme'); } catch (e) {}
+    if (saved !== 'dark' && saved !== 'light') saved = null;
+
+    function current() {
+      return document.documentElement.getAttribute('data-theme')
+          || (media.matches ? 'dark' : 'light');
+    }
+
+    function paint(theme) {
+      btn.setAttribute('aria-pressed', String(theme === 'dark'));
+      btn.title = theme === 'dark' ? 'Mudar para tema claro' : 'Mudar para tema escuro';
+      if (meta) meta.setAttribute('content', theme === 'dark' ? '#0c0d10' : '#ffffff');
+    }
+
+    function apply(theme, persist) {
+      document.documentElement.setAttribute('data-theme', theme);
+      if (persist) { try { localStorage.setItem('theme', theme); } catch (e) {} }
+      paint(theme);
+    }
+
+    paint(current());
+
+    btn.addEventListener('click', () => {
+      saved = current() === "dark" ? "light" : "dark";
+      apply(saved, true);
+    });
+
+    // Sem escolha guardada, acompanha o sistema.
+    const onSystemChange = () => { if (!saved) paint(media.matches ? 'dark' : 'light'); };
+    if (media.addEventListener) media.addEventListener('change', onSystemChange);
+    else if (media.addListener) media.addListener(onSystemChange);
+  })();
+
   /* -- Formulario -------------------------------------------- */
   const form  = document.getElementById('contactForm');
   const toast = document.getElementById('toast');

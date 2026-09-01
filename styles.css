@@ -31,8 +31,31 @@
   --shadow:    0 1px 2px rgba(16, 18, 21, .04), 0 12px 32px -20px rgba(16, 18, 21, .14);
 }
 
+/* --- TEMA ESCURO ---------------------------------------------
+   Aplicado quando o utilizador escolhe explicitamente (data-theme="dark")
+   ou, na ausencia de escolha guardada, pela preferencia do sistema.
+   ------------------------------------------------------------- */
+:root[data-theme="dark"] {
+  --bg:            #0c0d10;
+  --bg-alt:        #0f1013;
+  --surface:       #111318;
+  --surface-2:     #16181d;
+  --border:        #23262c;
+  --border-strong: #363a42;
+
+  --text:       #ecedf0;
+  --text-muted: #9aa1ab;
+  --text-dim:   #6b727c;
+
+  --accent:      #8ba6ff;
+  --accent-soft: rgba(139, 166, 255, .1);
+
+  --ok:     #3ec98a;
+  --shadow: 0 1px 2px rgba(0, 0, 0, .3), 0 12px 32px -20px rgba(0, 0, 0, .6);
+}
+
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme="light"]) {
     --bg:            #0c0d10;
     --bg-alt:        #0f1013;
     --surface:       #111318;
@@ -197,6 +220,38 @@ nav.scrolled {
 .nav-toggle.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
 .nav-toggle.open span:nth-child(2) { opacity: 0; }
 .nav-toggle.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+/* --- ACOES DA NAV / TEMA ------------------------------------- */
+.nav-actions { display: flex; align-items: center; gap: 6px; }
+
+.theme-toggle {
+  position: relative;
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 34px; height: 34px;
+  background: none;
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: color .2s, background .2s, border-color .2s;
+}
+.theme-toggle:hover { color: var(--text); background: var(--surface-2); border-color: var(--border); }
+.theme-toggle:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.theme-toggle svg {
+  position: absolute;
+  width: 17px; height: 17px;
+  transition: opacity .25s var(--ease), transform .35s var(--ease);
+}
+/* claro activo -> mostra a lua (accao: passar a escuro) */
+.theme-toggle .icon-moon { opacity: 1; transform: rotate(0) scale(1); }
+.theme-toggle .icon-sun  { opacity: 0; transform: rotate(-90deg) scale(.6); }
+/* escuro activo -> mostra o sol (accao: passar a claro) */
+:root[data-theme="dark"] .theme-toggle .icon-moon { opacity: 0; transform: rotate(90deg) scale(.6); }
+:root[data-theme="dark"] .theme-toggle .icon-sun  { opacity: 1; transform: rotate(0) scale(1); }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .theme-toggle .icon-moon { opacity: 0; transform: rotate(90deg) scale(.6); }
+  :root:not([data-theme="light"]) .theme-toggle .icon-sun  { opacity: 1; transform: rotate(0) scale(1); }
+}
 
 /* --- BOTOES -------------------------------------------------- */
 .btn {
